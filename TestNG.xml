@@ -1,7 +1,0 @@
-<suite name="TestSuite" parallel="tests" thread-count="1">
-    <test name="Test" parallel="methods">
-        <classes>
-            <class name="tests.AmazonTest"/>
-        </classes>
-    </test>
-</suite>
