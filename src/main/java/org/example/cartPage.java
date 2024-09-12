@@ -18,7 +18,7 @@ public class cartPage extends AbstractClass {
         WebElement cartButton = driver.findElement(cartPage_Locator.AddToCartButton);
         cartButton.click();
     }
-    public WebElement getCartViewButton() {
-        return driver.findElement(cartPage_Locator.AddToCartButton); // Adjust as needed
-    }
+//    public WebElement getCartViewButton() {
+//        return driver.findElement(cartPage_Locator.AddToCartButton); // Adjust as needed
+//    }
 }

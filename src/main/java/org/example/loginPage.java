@@ -15,15 +15,13 @@ public class loginPage extends AbstractClass {
     public loginPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        //PageFactory.initElements(driver, this);
     }
  
     public void openSigninpopup() {
         WebElement signin = driver.findElement(loginPage_Locator.signInpopup);
         signin.click();
     }
-    @Test(dataProvider="getData")
-
     public void validId(String email, String pass) throws InterruptedException {
         WebElement addEmail = driver.findElement(loginPage_Locator.addEmail);
         addEmail.sendKeys(email);
@@ -54,10 +52,5 @@ public class loginPage extends AbstractClass {
         password.sendKeys("Password");
         driver.findElement(loginPage_Locator.signInSubmit).click();
     }*/
-    @DataProvider(name = "getData")
-    public Object [][] getData() {
-        return new Object [][]{
-                {"9979259765","Pransi@2903"},{"abc","abc"}
-        };
-    }
+
 }
