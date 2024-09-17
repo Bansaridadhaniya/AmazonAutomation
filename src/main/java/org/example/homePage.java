@@ -3,6 +3,7 @@ package org.example;
 import Locators.homePage_Locator;
 import Utils.AbstractClass;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -24,23 +25,28 @@ public class homePage extends AbstractClass {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
-    public void searchForProduct(String productName){
+
+    public void searchForProduct(String productName) {
         WebElement searchElement = driver.findElement(homePage_Locator.SEARCH_BOX);
         searchElement.sendKeys(productName);
         searchElement.submit();
     }
 
-    public void searchSuggestionlisting(String productName){
+    public void searchSuggestionlisting(String productName) {
         WebElement searchElement1 = driver.findElement(homePage_Locator.SEARCH_BOX);
         searchElement1.sendKeys(productName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(homePage_Locator.LIST_ELEMENTS_OF_SEARCH));
         List<WebElement> searchresultlist = driver.findElements(homePage_Locator.LIST_ELEMENTS_OF_SEARCH);
-        for(WebElement searchResult : searchresultlist){
-            System.out.println(searchResult.getText());
-            if(searchResult.getText().equalsIgnoreCase("remote control drone"))
-            {
-                WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(searchResult));
-                clickableElement.click();
+        for (WebElement searchResult : searchresultlist) {
+            //System.out.println(searchResult.getText());
+            if (searchResult.getText().equalsIgnoreCase("remote control drone")) {
+                try {
+                    WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(searchResult));
+                    //clickableElement.click();
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", clickableElement);
+                    break;
+                } catch (StaleElementReferenceException e) {
+                }
             }
         }
     }

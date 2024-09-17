@@ -2,6 +2,7 @@ package org.example;
 
 import Utils.AbstractClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,13 +20,18 @@ public class listingPage extends AbstractClass {
 
     By addtocart = By.id("nav-cart");
 
-   // @FindBy (id= "a-autoid-2-announce")
-    //WebElement firstitem;
+
     public void addToCartProduct(){
-        WebElement product = driver.findElement(listingPage_Locator.First_item);
-        product.click();
+        WebElement addtocartbtn = driver.findElement(listingPage_Locator.First_item);
+        addtocartbtn.click();
 
         waitforElementToAppear(addtocart);
     }
 
+    public void gotoProductDetail(){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("scrollBy(0,500)");
+        WebElement productDetail = driver.findElement(listingPage_Locator.Product_name);
+        productDetail.click();
+    }
 }
