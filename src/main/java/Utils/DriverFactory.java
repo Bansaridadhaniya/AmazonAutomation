@@ -13,7 +13,6 @@ public class DriverFactory {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\BansariDadhaniya\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.in");
-
         return driver;
     }
 

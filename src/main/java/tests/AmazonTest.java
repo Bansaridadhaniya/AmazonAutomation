@@ -1,6 +1,4 @@
 package tests;
-import Locators.cartPage_Locator;
-import Locators.listingPage_Locator;
 import Utils.DriverFactory;
 import org.example.cartPage;
 import org.example.homePage;
@@ -42,23 +40,25 @@ public class AmazonTest {
         hp.searchForProduct("TV");
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("scrollBy(0, 1000)");
-        lp.addToCartProduct();
+        String selectedProduct = lp.addToCartProduct();
         cp.viewCart();
+        cp.verifyProduct(selectedProduct);
     }
+    //@Test(dataProvider = "getLoginData")
 
     @DataProvider(name = "getLoginData")
     public Object[][] getLoginData() {
         return new Object[][] {
-                {"9979259765", "Pransi@2903"}, // Valid credentials
-                {"abc", "abc"} // Invalid credentials
+                {"9979259765", "Pransi@2903"} // Valid credentials
+                //{"abc", "abc"} // Invalid credentials
         };
     }
-    @AfterMethod
+   /* @AfterMethod
     public void teardown() {
         // Close the browser after each test method
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }
 
