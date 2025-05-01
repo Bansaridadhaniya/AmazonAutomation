@@ -19,8 +19,8 @@ public class loginPage extends AbstractClass {
     }
  
     public void openSigninpopup() {
-        WebElement signin = driver.findElement(loginPage_Locator.signInpopup);
-        signin.click();
+        WebElement signing = driver.findElement(loginPage_Locator.signInpopup);
+        signing.click();
     }
     public void validId(String email, String pass) throws InterruptedException {
         WebElement addEmail = driver.findElement(loginPage_Locator.addEmail);

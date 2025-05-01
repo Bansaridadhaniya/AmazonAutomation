@@ -2,9 +2,11 @@ package org.example;
 
 import Locators.cartPage_Locator;
 import Utils.AbstractClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -19,16 +21,19 @@ public class cartPage extends AbstractClass {
 
     }
     public void viewCart(){
-        WebElement cartButton = driver.findElement(cartPage_Locator.AddToCartButton);
+        WebElement cartButton = driver.findElement(cartPage_Locator.CartButton);
         cartButton.click();
     }
     public void verifyProduct(String selectedProductName){
         List<WebElement> cartItems = driver.findElements(cartPage_Locator.ProductNamesInCart);
         boolean found = false;
         for (WebElement item : cartItems) {
-            System.out.println("Cart Item Text: " + item.getText().trim());
+            String cartItemText = item.getText().trim();
+
+            System.out.println("Cart Item Text: " + cartItemText);
             //String itemText = item.getText().replace("."," ");
-            if (selectedProductName.contains(item.getText())) {
+            if (selectedProductName.toLowerCase().contains(cartItemText.toLowerCase()) ||
+                    cartItemText.toLowerCase().contains(selectedProductName.toLowerCase())) {
                 found = true;
                 break;
             }

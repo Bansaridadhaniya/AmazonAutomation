@@ -39,12 +39,19 @@ public class AmazonTest {
         login.validId(email, pass);
         hp.searchForProduct("TV");
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("scrollBy(0, 1000)");
+        js.executeScript("scrollBy(0, 300)");
         String selectedProduct = lp.addToCartProduct();
         cp.viewCart();
         cp.verifyProduct(selectedProduct);
     }
-    //@Test(dataProvider = "getLoginData")
+    /*@Test(dataProvider = "getLoginData")
+    public void addToWishlist(String email, String pass) throws InterruptedException {
+        login.openSigninpopup();
+        login.validId(email, pass);
+        hp.searchForProduct("laptop");
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("scrollBy(0, 1000)");
+    }*/
 
     @DataProvider(name = "getLoginData")
     public Object[][] getLoginData() {
