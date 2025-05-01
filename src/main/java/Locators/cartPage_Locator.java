@@ -3,8 +3,7 @@ package Locators;
 import org.openqa.selenium.By;
 
 public class cartPage_Locator {
-    public static final By AddToCartButton = By.id("nav-cart");
-    //public static final By ProductNamesInCart = By.xpath("//div[@data-name='Active Items']/div/div/div/div/ul/li/a[contains(@class, 'sc-product-link')]");
-    public static final By ProductNamesInCart = By.xpath("//div[@data-name='Active Items']//a[contains(@class, 'sc-product-link')]//span");
+    public static final By CartButton = By.xpath("(//div[@class='a-row a-spacing-top-small']//input[@class='a-button-input'])[1]");
+    public static final By ProductNamesInCart = By.xpath("//div[@data-name='Active Items']//span[@class='a-truncate-cut']");
 
 }
